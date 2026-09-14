@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Link, Route, Routes, Navigate } from 'react-router-dom';
 import { LoadingSpinner } from '@org/shop-shared-ui';
+import { featureRoutes } from './feature-routes';
 import './app.css';
 
 // Lazy load feature components
@@ -14,6 +15,7 @@ const ProductDetail = lazy(() =>
     default: m.ProductDetail,
   })),
 );
+const FeatureIndex = lazy(() => import('./feature-index'));
 
 export function App() {
   return (
@@ -21,6 +23,10 @@ export function App() {
       <header className="app-header">
         <div className="header-content">
           <h1 className="app-title">Nx Shop Demo</h1>
+          <nav className="app-nav" aria-label="Primary">
+            <Link to="/products">Products</Link>
+            <Link to="/features">Features</Link>
+          </nav>
         </div>
       </header>
 
@@ -30,6 +36,8 @@ export function App() {
             <Route path="/" element={<Navigate to="/products" replace />} />
             <Route path="/products" element={<ProductList />} />
             <Route path="/products/:id" element={<ProductDetail />} />
+            <Route path="/features" element={<FeatureIndex />} />
+            {featureRoutes}
             <Route path="*" element={<Navigate to="/products" replace />} />
           </Routes>
         </Suspense>

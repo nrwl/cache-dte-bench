@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { PRODUCTS_ROUTE } from '@org/shop-feature-products';
 
 test.describe('Shop Homepage', () => {
   test.beforeEach(async ({ page }) => {
@@ -12,7 +13,7 @@ test.describe('Shop Homepage', () => {
 
   test('should redirect to products page by default', async ({ page }) => {
     await page.waitForURL('**/products');
-    expect(page.url()).toContain('/products');
+    expect(page.url()).toContain(PRODUCTS_ROUTE);
 
     const productsHeading = page.locator('h1:has-text("Our Products")');
     await expect(productsHeading).toBeVisible();

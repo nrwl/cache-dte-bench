@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { PRODUCTS_ROUTE } from '@org/shop-feature-products';
 
 test.describe('Product Listing Page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/products');
+    await page.goto(PRODUCTS_ROUTE);
     await page.waitForLoadState('domcontentloaded');
   });
 

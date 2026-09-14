@@ -1,14 +1,22 @@
 import { test, expect } from '@playwright/test';
+import { PRODUCTS_ROUTE } from '@org/shop-feature-products';
 
 test.describe('Product Detail Page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/products');
+    await page.goto(PRODUCTS_ROUTE);
     await page.waitForLoadState('domcontentloaded');
 
     // Click first product to navigate to detail page
     const firstProduct = page.locator('[class*="product-card"]').first();
     await firstProduct.click();
     await page.waitForURL('**/products/*');
+
+    // The router wraps navigations in startTransition, so the listing stays on
+    // screen until the lazy detail chunk resolves. Wait for the detail view
+    // itself rather than just the URL change.
+    await expect(
+      page.locator('[class*="product-detail-container"]'),
+    ).toBeVisible();
   });
 
   test('should display product details', async ({ page }) => {
@@ -18,7 +26,9 @@ test.describe('Product Detail Page', () => {
     await expect(productName).toHaveText(/.+/);
 
     // Check product image
-    const productImage = page.locator('[class*="product-image"] img');
+    const productImage = page.locator(
+      '[class*="product-detail-container"] [class*="product-image"] img',
+    );
     await expect(productImage).toBeVisible();
 
     // Check product price
@@ -86,7 +96,7 @@ test.describe('Product Detail Page', () => {
     page,
   }) => {
     // Navigate back to products
-    await page.goto('/products');
+    await page.goto(PRODUCTS_ROUTE);
 
     // The seed data always contains out-of-stock products.
     const outOfStockCards = page.locator(

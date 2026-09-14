@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { PRODUCTS_ROUTE } from '@org/shop-feature-products';
+import { productDetailPath } from '@org/shop-feature-product-detail';
 
 test.describe('Navigation Flow', () => {
   test('should complete full user journey from listing to detail and back', async ({
@@ -9,7 +11,7 @@ test.describe('Navigation Flow', () => {
 
     // Should redirect to products
     await page.waitForURL('**/products');
-    expect(page.url()).toContain('/products');
+    expect(page.url()).toContain(PRODUCTS_ROUTE);
 
     // Click on a specific product
     const productCard = page.locator('[class*="product-card"]').first();
@@ -30,7 +32,7 @@ test.describe('Navigation Flow', () => {
 
     // Should be back on products page
     await page.waitForURL('**/products');
-    expect(page.url()).toContain('/products');
+    expect(page.url()).toContain(PRODUCTS_ROUTE);
 
     // Original product should still be visible
     const sameProduct = page.locator(`h3:has-text("${productName}")`);
@@ -39,7 +41,7 @@ test.describe('Navigation Flow', () => {
 
   test('should handle browser back/forward navigation', async ({ page }) => {
     // Navigate to products
-    await page.goto('/products');
+    await page.goto(PRODUCTS_ROUTE);
 
     // Click a product
     const firstProduct = page.locator('[class*="product-card"]').first();
@@ -50,7 +52,7 @@ test.describe('Navigation Flow', () => {
     // Use browser back button
     await page.goBack();
     await page.waitForURL('**/products');
-    expect(page.url()).toContain('/products');
+    expect(page.url()).toContain(PRODUCTS_ROUTE);
 
     // Use browser forward button
     await page.goForward();
@@ -60,7 +62,7 @@ test.describe('Navigation Flow', () => {
 
   test('should handle deep linking to product detail', async ({ page }) => {
     // First, get a valid product ID by visiting the products page
-    await page.goto('/products');
+    await page.goto(PRODUCTS_ROUTE);
     const firstProduct = page.locator('[class*="product-card"]').first();
     await firstProduct.click();
     await page.waitForURL('**/products/*');
@@ -69,7 +71,7 @@ test.describe('Navigation Flow', () => {
     const productId = productUrl.split('/').pop();
 
     // Now test deep linking directly to this product
-    await page.goto(`/products/${productId}`);
+    await page.goto(productDetailPath(productId ?? ''));
     await page.waitForLoadState('domcontentloaded');
 
     // Product detail should load properly
@@ -82,7 +84,7 @@ test.describe('Navigation Flow', () => {
 
   test('should handle invalid product URLs gracefully', async ({ page }) => {
     // Navigate to invalid product ID
-    await page.goto('/products/invalid-id-999999');
+    await page.goto(productDetailPath('invalid-id-999999'));
     await page.waitForLoadState('domcontentloaded');
 
     // Should show error message - using first() to avoid strict mode violation

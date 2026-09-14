@@ -28,6 +28,21 @@ This repository demonstrates a production-ready React monorepo with:
 - **E2E Testing**
   - `shop-e2e` - Playwright tests for the shop application
 
+- **Generated benchmark libraries** (500 projects, ~300k lines of TypeScript)
+
+  - `@org/shop-feature-*` - 300 feature libraries (30 domains x 10 kinds), each mounted at `/features/<name>`
+  - `@org/shop-ui-*` - 130 UI component libraries
+  - `@org/shop-util-*` - 70 utility libraries
+  - `apps/shop-e2e/src/features/*.spec.ts` - one Playwright spec per feature (4 tests each)
+  - `apps/shop-e2e/src/journeys/*.spec.ts` - one cross-feature journey spec per domain
+
+  Every e2e spec imports the feature library it exercises, so the project graph links `shop-e2e` to all features.
+  The libraries, app routes and specs are produced by `tools/generate-shop-libs.mjs`. Regenerate with:
+
+  ```bash
+  node tools/generate-shop-libs.mjs && npm install && npx nx sync
+  ```
+
 ## 🚀 Quick Start
 
 ```bash
