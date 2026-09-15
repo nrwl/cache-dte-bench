@@ -51,7 +51,6 @@ jobs:
           node-version: 24
           cache: 'npm'
       - run: npm ci
-      - run: npx nx format:check --base="remotes/origin/main"
       - run: npx nx run-many -t lint --parallel=2
 
   test:
@@ -67,6 +66,22 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npx nx run-many -t test --parallel=2
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          filter: tree:0
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - run: npx nx format:check --base="remotes/origin/main"
+      - run: npx nx sync:check
+      - run: npx nx run-many -t validate-fast validate-slow --parallel=2
 
   e2e:
     runs-on: ubuntu-latest

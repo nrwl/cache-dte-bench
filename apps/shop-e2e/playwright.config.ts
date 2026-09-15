@@ -16,6 +16,13 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
  */
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
+  /*
+   * The benchmark runs e2e tests strictly one at a time: a single Playwright
+   * worker and no intra-file parallelism. Combined with the per-test pacing in
+   * src/support/pacing.ts this makes the full suite take about an hour.
+   */
+  workers: 1,
+  fullyParallel: false,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,

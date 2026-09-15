@@ -4,6 +4,25 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
+  "nx": {
+    "name": "@org/source",
+    "targets": {
+      "validate-fast": {
+        "command": "node tools/validation/simulate-validation.mjs validate-fast 2",
+        "cache": true,
+        "inputs": [
+          "{workspaceRoot}/tools/validation/**/*"
+        ]
+      },
+      "validate-slow": {
+        "command": "node tools/validation/simulate-validation.mjs validate-slow 4",
+        "cache": true,
+        "inputs": [
+          "{workspaceRoot}/tools/validation/**/*"
+        ]
+      }
+    }
+  },
   "dependencies": {
     "express": "^4.21.2",
     "react": "19.0.0",
