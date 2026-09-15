@@ -3,9 +3,11 @@ import {
   BUNDLES_EDITOR_FEATURE,
   BUNDLES_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-bundles-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Bundles Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(BUNDLES_EDITOR_FEATURE.route);
     await expect(page.getByTestId(BUNDLES_EDITOR_FEATURE.testId)).toBeVisible();
   });

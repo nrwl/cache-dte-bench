@@ -3,9 +3,11 @@ import {
   ANALYTICS_HISTORY_FEATURE,
   ANALYTICS_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-analytics-history';
+import { pace } from '../support/pacing';
 
 test.describe('Analytics History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ANALYTICS_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(ANALYTICS_HISTORY_FEATURE.testId),

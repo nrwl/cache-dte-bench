@@ -3,9 +3,11 @@ import {
   LOYALTY_HISTORY_FEATURE,
   LOYALTY_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-loyalty-history';
+import { pace } from '../support/pacing';
 
 test.describe('Loyalty History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(LOYALTY_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(LOYALTY_HISTORY_FEATURE.testId),

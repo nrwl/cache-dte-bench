@@ -3,9 +3,11 @@ import {
   SUBSCRIPTIONS_EDITOR_FEATURE,
   SUBSCRIPTIONS_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-subscriptions-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Subscriptions Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUBSCRIPTIONS_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(SUBSCRIPTIONS_EDITOR_FEATURE.testId),

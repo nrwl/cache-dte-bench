@@ -3,9 +3,11 @@ import {
   ORDERS_LIST_FEATURE,
   ORDERS_LIST_ITEM_COUNT,
 } from '@org/shop-feature-orders-list';
+import { pace } from '../support/pacing';
 
 test.describe('Orders List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ORDERS_LIST_FEATURE.route);
     await expect(page.getByTestId(ORDERS_LIST_FEATURE.testId)).toBeVisible();
   });

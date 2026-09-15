@@ -3,9 +3,11 @@ import {
   STORE_LOCATOR_EDITOR_FEATURE,
   STORE_LOCATOR_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-store-locator-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Store Locator Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(STORE_LOCATOR_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(STORE_LOCATOR_EDITOR_FEATURE.testId),

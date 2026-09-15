@@ -3,9 +3,11 @@ import {
   PROMOTIONS_DETAILS_FEATURE,
   PROMOTIONS_DETAILS_ITEM_COUNT,
 } from '@org/shop-feature-promotions-details';
+import { pace } from '../support/pacing';
 
 test.describe('Promotions Details', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROMOTIONS_DETAILS_FEATURE.route);
     await expect(
       page.getByTestId(PROMOTIONS_DETAILS_FEATURE.testId),

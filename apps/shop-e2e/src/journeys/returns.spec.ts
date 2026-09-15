@@ -9,6 +9,7 @@ import { RETURNS_LIST_FEATURE } from '@org/shop-feature-returns-list';
 import { RETURNS_WIZARD_FEATURE } from '@org/shop-feature-returns-wizard';
 import { RETURNS_DASHBOARD_FEATURE } from '@org/shop-feature-returns-dashboard';
 import { RETURNS_INSIGHTS_FEATURE } from '@org/shop-feature-returns-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   RETURNS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Returns journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every returns feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

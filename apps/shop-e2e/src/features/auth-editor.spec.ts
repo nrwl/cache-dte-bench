@@ -3,9 +3,11 @@ import {
   AUTH_EDITOR_FEATURE,
   AUTH_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-auth-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Auth Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(AUTH_EDITOR_FEATURE.route);
     await expect(page.getByTestId(AUTH_EDITOR_FEATURE.testId)).toBeVisible();
   });

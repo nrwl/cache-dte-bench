@@ -9,6 +9,7 @@ import { CART_LIST_FEATURE } from '@org/shop-feature-cart-list';
 import { CART_WIZARD_FEATURE } from '@org/shop-feature-cart-wizard';
 import { CART_DASHBOARD_FEATURE } from '@org/shop-feature-cart-dashboard';
 import { CART_INSIGHTS_FEATURE } from '@org/shop-feature-cart-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   CART_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Cart journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every cart feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

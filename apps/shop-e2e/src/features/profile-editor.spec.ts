@@ -3,9 +3,11 @@ import {
   PROFILE_EDITOR_FEATURE,
   PROFILE_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-profile-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Profile Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROFILE_EDITOR_FEATURE.route);
     await expect(page.getByTestId(PROFILE_EDITOR_FEATURE.testId)).toBeVisible();
   });

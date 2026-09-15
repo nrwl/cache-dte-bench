@@ -3,9 +3,11 @@ import {
   WISHLIST_HISTORY_FEATURE,
   WISHLIST_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-wishlist-history';
+import { pace } from '../support/pacing';
 
 test.describe('Wishlist History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(WISHLIST_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(WISHLIST_HISTORY_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   ADDRESSES_WIZARD_FEATURE,
   ADDRESSES_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-addresses-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Addresses Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ADDRESSES_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(ADDRESSES_WIZARD_FEATURE.testId),

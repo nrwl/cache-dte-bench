@@ -3,9 +3,11 @@ import {
   COMPARE_SETTINGS_FEATURE,
   COMPARE_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-compare-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Compare Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(COMPARE_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(COMPARE_SETTINGS_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   GIFT_CARDS_HISTORY_FEATURE,
   GIFT_CARDS_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-gift-cards-history';
+import { pace } from '../support/pacing';
 
 test.describe('Gift Cards History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(GIFT_CARDS_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(GIFT_CARDS_HISTORY_FEATURE.testId),

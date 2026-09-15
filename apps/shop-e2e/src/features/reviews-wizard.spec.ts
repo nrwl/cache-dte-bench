@@ -3,9 +3,11 @@ import {
   REVIEWS_WIZARD_FEATURE,
   REVIEWS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-reviews-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Reviews Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(REVIEWS_WIZARD_FEATURE.route);
     await expect(page.getByTestId(REVIEWS_WIZARD_FEATURE.testId)).toBeVisible();
   });

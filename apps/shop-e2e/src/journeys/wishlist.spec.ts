@@ -9,6 +9,7 @@ import { WISHLIST_LIST_FEATURE } from '@org/shop-feature-wishlist-list';
 import { WISHLIST_WIZARD_FEATURE } from '@org/shop-feature-wishlist-wizard';
 import { WISHLIST_DASHBOARD_FEATURE } from '@org/shop-feature-wishlist-dashboard';
 import { WISHLIST_INSIGHTS_FEATURE } from '@org/shop-feature-wishlist-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   WISHLIST_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Wishlist journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every wishlist feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

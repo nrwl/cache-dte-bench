@@ -3,9 +3,11 @@ import {
   SUPPORT_LIST_FEATURE,
   SUPPORT_LIST_ITEM_COUNT,
 } from '@org/shop-feature-support-list';
+import { pace } from '../support/pacing';
 
 test.describe('Support List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUPPORT_LIST_FEATURE.route);
     await expect(page.getByTestId(SUPPORT_LIST_FEATURE.testId)).toBeVisible();
   });

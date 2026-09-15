@@ -3,9 +3,11 @@ import {
   GIFT_CARDS_SETTINGS_FEATURE,
   GIFT_CARDS_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-gift-cards-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Gift Cards Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(GIFT_CARDS_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(GIFT_CARDS_SETTINGS_FEATURE.testId),

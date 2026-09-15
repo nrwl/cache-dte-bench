@@ -3,9 +3,11 @@ import {
   ACCOUNT_DASHBOARD_FEATURE,
   ACCOUNT_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-account-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Account Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ACCOUNT_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(ACCOUNT_DASHBOARD_FEATURE.testId),

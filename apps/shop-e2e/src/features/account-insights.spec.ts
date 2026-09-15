@@ -3,9 +3,11 @@ import {
   ACCOUNT_INSIGHTS_FEATURE,
   ACCOUNT_INSIGHTS_ITEM_COUNT,
 } from '@org/shop-feature-account-insights';
+import { pace } from '../support/pacing';
 
 test.describe('Account Insights', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ACCOUNT_INSIGHTS_FEATURE.route);
     await expect(
       page.getByTestId(ACCOUNT_INSIGHTS_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   CATALOG_OVERVIEW_FEATURE,
   CATALOG_OVERVIEW_ITEM_COUNT,
 } from '@org/shop-feature-catalog-overview';
+import { pace } from '../support/pacing';
 
 test.describe('Catalog Overview', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CATALOG_OVERVIEW_FEATURE.route);
     await expect(
       page.getByTestId(CATALOG_OVERVIEW_FEATURE.testId),

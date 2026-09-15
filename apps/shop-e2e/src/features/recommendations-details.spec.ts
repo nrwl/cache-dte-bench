@@ -3,9 +3,11 @@ import {
   RECOMMENDATIONS_DETAILS_FEATURE,
   RECOMMENDATIONS_DETAILS_ITEM_COUNT,
 } from '@org/shop-feature-recommendations-details';
+import { pace } from '../support/pacing';
 
 test.describe('Recommendations Details', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RECOMMENDATIONS_DETAILS_FEATURE.route);
     await expect(
       page.getByTestId(RECOMMENDATIONS_DETAILS_FEATURE.testId),

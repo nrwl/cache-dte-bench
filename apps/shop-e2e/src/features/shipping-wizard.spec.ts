@@ -3,9 +3,11 @@ import {
   SHIPPING_WIZARD_FEATURE,
   SHIPPING_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-shipping-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Shipping Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SHIPPING_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(SHIPPING_WIZARD_FEATURE.testId),

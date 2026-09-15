@@ -3,9 +3,11 @@ import {
   PREORDERS_LIST_FEATURE,
   PREORDERS_LIST_ITEM_COUNT,
 } from '@org/shop-feature-preorders-list';
+import { pace } from '../support/pacing';
 
 test.describe('Preorders List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PREORDERS_LIST_FEATURE.route);
     await expect(page.getByTestId(PREORDERS_LIST_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   SHIPPING_DASHBOARD_FEATURE,
   SHIPPING_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-shipping-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Shipping Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SHIPPING_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(SHIPPING_DASHBOARD_FEATURE.testId),

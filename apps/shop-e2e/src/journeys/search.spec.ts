@@ -9,6 +9,7 @@ import { SEARCH_LIST_FEATURE } from '@org/shop-feature-search-list';
 import { SEARCH_WIZARD_FEATURE } from '@org/shop-feature-search-wizard';
 import { SEARCH_DASHBOARD_FEATURE } from '@org/shop-feature-search-dashboard';
 import { SEARCH_INSIGHTS_FEATURE } from '@org/shop-feature-search-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   SEARCH_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Search journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every search feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

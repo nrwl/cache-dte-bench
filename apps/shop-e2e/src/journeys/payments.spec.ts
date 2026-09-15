@@ -9,6 +9,7 @@ import { PAYMENTS_LIST_FEATURE } from '@org/shop-feature-payments-list';
 import { PAYMENTS_WIZARD_FEATURE } from '@org/shop-feature-payments-wizard';
 import { PAYMENTS_DASHBOARD_FEATURE } from '@org/shop-feature-payments-dashboard';
 import { PAYMENTS_INSIGHTS_FEATURE } from '@org/shop-feature-payments-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   PAYMENTS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Payments journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every payments feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

@@ -3,9 +3,11 @@ import {
   STORE_LOCATOR_DASHBOARD_FEATURE,
   STORE_LOCATOR_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-store-locator-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Store Locator Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(STORE_LOCATOR_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(STORE_LOCATOR_DASHBOARD_FEATURE.testId),

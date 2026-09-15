@@ -9,6 +9,7 @@ import { AUTH_LIST_FEATURE } from '@org/shop-feature-auth-list';
 import { AUTH_WIZARD_FEATURE } from '@org/shop-feature-auth-wizard';
 import { AUTH_DASHBOARD_FEATURE } from '@org/shop-feature-auth-dashboard';
 import { AUTH_INSIGHTS_FEATURE } from '@org/shop-feature-auth-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   AUTH_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Auth journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every auth feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

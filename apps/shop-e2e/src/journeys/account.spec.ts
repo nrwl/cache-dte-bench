@@ -9,6 +9,7 @@ import { ACCOUNT_LIST_FEATURE } from '@org/shop-feature-account-list';
 import { ACCOUNT_WIZARD_FEATURE } from '@org/shop-feature-account-wizard';
 import { ACCOUNT_DASHBOARD_FEATURE } from '@org/shop-feature-account-dashboard';
 import { ACCOUNT_INSIGHTS_FEATURE } from '@org/shop-feature-account-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   ACCOUNT_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Account journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every account feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

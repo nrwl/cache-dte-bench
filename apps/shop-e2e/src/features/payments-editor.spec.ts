@@ -3,9 +3,11 @@ import {
   PAYMENTS_EDITOR_FEATURE,
   PAYMENTS_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-payments-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Payments Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PAYMENTS_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(PAYMENTS_EDITOR_FEATURE.testId),

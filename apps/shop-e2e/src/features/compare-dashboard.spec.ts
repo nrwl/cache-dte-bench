@@ -3,9 +3,11 @@ import {
   COMPARE_DASHBOARD_FEATURE,
   COMPARE_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-compare-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Compare Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(COMPARE_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(COMPARE_DASHBOARD_FEATURE.testId),

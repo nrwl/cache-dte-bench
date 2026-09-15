@@ -3,9 +3,11 @@ import {
   COMPARE_EDITOR_FEATURE,
   COMPARE_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-compare-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Compare Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(COMPARE_EDITOR_FEATURE.route);
     await expect(page.getByTestId(COMPARE_EDITOR_FEATURE.testId)).toBeVisible();
   });

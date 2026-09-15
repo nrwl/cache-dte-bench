@@ -3,9 +3,11 @@ import {
   TRACKING_EDITOR_FEATURE,
   TRACKING_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-tracking-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Tracking Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(TRACKING_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(TRACKING_EDITOR_FEATURE.testId),

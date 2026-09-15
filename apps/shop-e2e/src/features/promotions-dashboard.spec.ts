@@ -3,9 +3,11 @@ import {
   PROMOTIONS_DASHBOARD_FEATURE,
   PROMOTIONS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-promotions-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Promotions Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROMOTIONS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(PROMOTIONS_DASHBOARD_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   AUTH_INSIGHTS_FEATURE,
   AUTH_INSIGHTS_ITEM_COUNT,
 } from '@org/shop-feature-auth-insights';
+import { pace } from '../support/pacing';
 
 test.describe('Auth Insights', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(AUTH_INSIGHTS_FEATURE.route);
     await expect(page.getByTestId(AUTH_INSIGHTS_FEATURE.testId)).toBeVisible();
   });

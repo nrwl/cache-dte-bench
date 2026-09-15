@@ -3,9 +3,11 @@ import {
   PREORDERS_WIZARD_FEATURE,
   PREORDERS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-preorders-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Preorders Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PREORDERS_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(PREORDERS_WIZARD_FEATURE.testId),

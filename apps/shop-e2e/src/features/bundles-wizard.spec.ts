@@ -3,9 +3,11 @@ import {
   BUNDLES_WIZARD_FEATURE,
   BUNDLES_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-bundles-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Bundles Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(BUNDLES_WIZARD_FEATURE.route);
     await expect(page.getByTestId(BUNDLES_WIZARD_FEATURE.testId)).toBeVisible();
   });

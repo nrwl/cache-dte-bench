@@ -9,6 +9,7 @@ import { ADDRESSES_LIST_FEATURE } from '@org/shop-feature-addresses-list';
 import { ADDRESSES_WIZARD_FEATURE } from '@org/shop-feature-addresses-wizard';
 import { ADDRESSES_DASHBOARD_FEATURE } from '@org/shop-feature-addresses-dashboard';
 import { ADDRESSES_INSIGHTS_FEATURE } from '@org/shop-feature-addresses-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   ADDRESSES_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Addresses journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every addresses feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

@@ -3,9 +3,11 @@ import {
   CATALOG_EDITOR_FEATURE,
   CATALOG_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-catalog-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Catalog Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CATALOG_EDITOR_FEATURE.route);
     await expect(page.getByTestId(CATALOG_EDITOR_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   CART_DASHBOARD_FEATURE,
   CART_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-cart-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Cart Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CART_DASHBOARD_FEATURE.route);
     await expect(page.getByTestId(CART_DASHBOARD_FEATURE.testId)).toBeVisible();
   });

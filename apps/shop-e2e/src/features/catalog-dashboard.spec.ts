@@ -3,9 +3,11 @@ import {
   CATALOG_DASHBOARD_FEATURE,
   CATALOG_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-catalog-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Catalog Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CATALOG_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(CATALOG_DASHBOARD_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   SUPPORT_DASHBOARD_FEATURE,
   SUPPORT_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-support-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Support Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUPPORT_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(SUPPORT_DASHBOARD_FEATURE.testId),

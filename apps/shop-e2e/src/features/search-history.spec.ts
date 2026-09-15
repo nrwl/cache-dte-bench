@@ -3,9 +3,11 @@ import {
   SEARCH_HISTORY_FEATURE,
   SEARCH_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-search-history';
+import { pace } from '../support/pacing';
 
 test.describe('Search History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SEARCH_HISTORY_FEATURE.route);
     await expect(page.getByTestId(SEARCH_HISTORY_FEATURE.testId)).toBeVisible();
   });

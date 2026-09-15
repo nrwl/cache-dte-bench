@@ -3,9 +3,11 @@ import {
   SHIPPING_SUMMARY_FEATURE,
   SHIPPING_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-shipping-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Shipping Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SHIPPING_SUMMARY_FEATURE.route);
     await expect(
       page.getByTestId(SHIPPING_SUMMARY_FEATURE.testId),

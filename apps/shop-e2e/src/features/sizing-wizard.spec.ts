@@ -3,9 +3,11 @@ import {
   SIZING_WIZARD_FEATURE,
   SIZING_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-sizing-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Sizing Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SIZING_WIZARD_FEATURE.route);
     await expect(page.getByTestId(SIZING_WIZARD_FEATURE.testId)).toBeVisible();
   });

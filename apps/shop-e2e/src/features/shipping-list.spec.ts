@@ -3,9 +3,11 @@ import {
   SHIPPING_LIST_FEATURE,
   SHIPPING_LIST_ITEM_COUNT,
 } from '@org/shop-feature-shipping-list';
+import { pace } from '../support/pacing';
 
 test.describe('Shipping List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SHIPPING_LIST_FEATURE.route);
     await expect(page.getByTestId(SHIPPING_LIST_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   CATALOG_WIZARD_FEATURE,
   CATALOG_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-catalog-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Catalog Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CATALOG_WIZARD_FEATURE.route);
     await expect(page.getByTestId(CATALOG_WIZARD_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   PAYMENTS_DASHBOARD_FEATURE,
   PAYMENTS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-payments-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Payments Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PAYMENTS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(PAYMENTS_DASHBOARD_FEATURE.testId),

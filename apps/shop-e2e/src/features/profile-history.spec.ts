@@ -3,9 +3,11 @@ import {
   PROFILE_HISTORY_FEATURE,
   PROFILE_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-profile-history';
+import { pace } from '../support/pacing';
 
 test.describe('Profile History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROFILE_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(PROFILE_HISTORY_FEATURE.testId),

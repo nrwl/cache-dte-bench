@@ -3,9 +3,11 @@ import {
   RECOMMENDATIONS_WIZARD_FEATURE,
   RECOMMENDATIONS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-recommendations-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Recommendations Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RECOMMENDATIONS_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(RECOMMENDATIONS_WIZARD_FEATURE.testId),

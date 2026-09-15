@@ -3,9 +3,11 @@ import {
   SUPPORT_EDITOR_FEATURE,
   SUPPORT_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-support-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Support Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUPPORT_EDITOR_FEATURE.route);
     await expect(page.getByTestId(SUPPORT_EDITOR_FEATURE.testId)).toBeVisible();
   });

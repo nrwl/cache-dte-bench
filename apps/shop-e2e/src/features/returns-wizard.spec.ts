@@ -3,9 +3,11 @@ import {
   RETURNS_WIZARD_FEATURE,
   RETURNS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-returns-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Returns Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RETURNS_WIZARD_FEATURE.route);
     await expect(page.getByTestId(RETURNS_WIZARD_FEATURE.testId)).toBeVisible();
   });

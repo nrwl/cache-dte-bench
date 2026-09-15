@@ -3,9 +3,11 @@ import {
   PAYMENTS_HISTORY_FEATURE,
   PAYMENTS_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-payments-history';
+import { pace } from '../support/pacing';
 
 test.describe('Payments History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PAYMENTS_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(PAYMENTS_HISTORY_FEATURE.testId),

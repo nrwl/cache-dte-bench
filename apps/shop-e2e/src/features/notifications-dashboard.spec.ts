@@ -3,9 +3,11 @@ import {
   NOTIFICATIONS_DASHBOARD_FEATURE,
   NOTIFICATIONS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-notifications-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Notifications Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(NOTIFICATIONS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(NOTIFICATIONS_DASHBOARD_FEATURE.testId),

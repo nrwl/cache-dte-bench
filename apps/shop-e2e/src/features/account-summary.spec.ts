@@ -3,9 +3,11 @@ import {
   ACCOUNT_SUMMARY_FEATURE,
   ACCOUNT_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-account-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Account Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ACCOUNT_SUMMARY_FEATURE.route);
     await expect(
       page.getByTestId(ACCOUNT_SUMMARY_FEATURE.testId),

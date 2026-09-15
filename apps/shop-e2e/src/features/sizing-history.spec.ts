@@ -3,9 +3,11 @@ import {
   SIZING_HISTORY_FEATURE,
   SIZING_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-sizing-history';
+import { pace } from '../support/pacing';
 
 test.describe('Sizing History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SIZING_HISTORY_FEATURE.route);
     await expect(page.getByTestId(SIZING_HISTORY_FEATURE.testId)).toBeVisible();
   });

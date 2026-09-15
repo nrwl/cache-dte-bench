@@ -3,9 +3,11 @@ import {
   PROFILE_SETTINGS_FEATURE,
   PROFILE_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-profile-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Profile Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROFILE_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(PROFILE_SETTINGS_FEATURE.testId),

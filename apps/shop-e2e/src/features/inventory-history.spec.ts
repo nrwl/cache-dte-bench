@@ -3,9 +3,11 @@ import {
   INVENTORY_HISTORY_FEATURE,
   INVENTORY_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-inventory-history';
+import { pace } from '../support/pacing';
 
 test.describe('Inventory History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(INVENTORY_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(INVENTORY_HISTORY_FEATURE.testId),

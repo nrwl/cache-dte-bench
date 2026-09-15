@@ -3,9 +3,11 @@ import {
   COMPARE_OVERVIEW_FEATURE,
   COMPARE_OVERVIEW_ITEM_COUNT,
 } from '@org/shop-feature-compare-overview';
+import { pace } from '../support/pacing';
 
 test.describe('Compare Overview', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(COMPARE_OVERVIEW_FEATURE.route);
     await expect(
       page.getByTestId(COMPARE_OVERVIEW_FEATURE.testId),

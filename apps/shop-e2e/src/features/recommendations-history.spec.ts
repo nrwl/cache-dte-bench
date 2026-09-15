@@ -3,9 +3,11 @@ import {
   RECOMMENDATIONS_HISTORY_FEATURE,
   RECOMMENDATIONS_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-recommendations-history';
+import { pace } from '../support/pacing';
 
 test.describe('Recommendations History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RECOMMENDATIONS_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(RECOMMENDATIONS_HISTORY_FEATURE.testId),

@@ -37,6 +37,8 @@ This repository demonstrates a production-ready React monorepo with:
   - `apps/shop-e2e/src/journeys/*.spec.ts` - one cross-feature journey spec per domain
 
   Every e2e spec imports the feature library it exercises, so the project graph links `shop-e2e` to all features.
+  Each generated e2e test sleeps for `E2E_TEST_DELAY_MS` (default 2000ms, see `apps/shop-e2e/src/support/pacing.ts`)
+  so the whole suite takes roughly an hour on one Playwright worker in CI. Set `E2E_TEST_DELAY_MS=0` to run at full speed locally.
   The libraries, app routes and specs are produced by `tools/generate-shop-libs.mjs`. Regenerate with:
 
   ```bash

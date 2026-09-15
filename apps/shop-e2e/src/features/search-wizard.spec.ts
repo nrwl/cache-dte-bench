@@ -3,9 +3,11 @@ import {
   SEARCH_WIZARD_FEATURE,
   SEARCH_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-search-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Search Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SEARCH_WIZARD_FEATURE.route);
     await expect(page.getByTestId(SEARCH_WIZARD_FEATURE.testId)).toBeVisible();
   });

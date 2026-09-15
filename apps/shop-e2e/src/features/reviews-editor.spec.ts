@@ -3,9 +3,11 @@ import {
   REVIEWS_EDITOR_FEATURE,
   REVIEWS_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-reviews-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Reviews Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(REVIEWS_EDITOR_FEATURE.route);
     await expect(page.getByTestId(REVIEWS_EDITOR_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   SIZING_DETAILS_FEATURE,
   SIZING_DETAILS_ITEM_COUNT,
 } from '@org/shop-feature-sizing-details';
+import { pace } from '../support/pacing';
 
 test.describe('Sizing Details', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SIZING_DETAILS_FEATURE.route);
     await expect(page.getByTestId(SIZING_DETAILS_FEATURE.testId)).toBeVisible();
   });

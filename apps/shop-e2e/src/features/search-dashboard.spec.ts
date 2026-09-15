@@ -3,9 +3,11 @@ import {
   SEARCH_DASHBOARD_FEATURE,
   SEARCH_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-search-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Search Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SEARCH_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(SEARCH_DASHBOARD_FEATURE.testId),

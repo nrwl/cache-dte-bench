@@ -3,9 +3,11 @@ import {
   ANALYTICS_LIST_FEATURE,
   ANALYTICS_LIST_ITEM_COUNT,
 } from '@org/shop-feature-analytics-list';
+import { pace } from '../support/pacing';
 
 test.describe('Analytics List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ANALYTICS_LIST_FEATURE.route);
     await expect(page.getByTestId(ANALYTICS_LIST_FEATURE.testId)).toBeVisible();
   });

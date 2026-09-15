@@ -3,9 +3,11 @@ import {
   ANALYTICS_EDITOR_FEATURE,
   ANALYTICS_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-analytics-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Analytics Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ANALYTICS_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(ANALYTICS_EDITOR_FEATURE.testId),

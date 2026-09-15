@@ -3,9 +3,11 @@ import {
   RETURNS_DASHBOARD_FEATURE,
   RETURNS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-returns-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Returns Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RETURNS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(RETURNS_DASHBOARD_FEATURE.testId),

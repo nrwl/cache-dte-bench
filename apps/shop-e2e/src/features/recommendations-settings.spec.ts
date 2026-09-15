@@ -3,9 +3,11 @@ import {
   RECOMMENDATIONS_SETTINGS_FEATURE,
   RECOMMENDATIONS_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-recommendations-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Recommendations Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RECOMMENDATIONS_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(RECOMMENDATIONS_SETTINGS_FEATURE.testId),

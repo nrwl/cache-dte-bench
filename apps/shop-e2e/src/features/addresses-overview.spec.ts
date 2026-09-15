@@ -3,9 +3,11 @@ import {
   ADDRESSES_OVERVIEW_FEATURE,
   ADDRESSES_OVERVIEW_ITEM_COUNT,
 } from '@org/shop-feature-addresses-overview';
+import { pace } from '../support/pacing';
 
 test.describe('Addresses Overview', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ADDRESSES_OVERVIEW_FEATURE.route);
     await expect(
       page.getByTestId(ADDRESSES_OVERVIEW_FEATURE.testId),

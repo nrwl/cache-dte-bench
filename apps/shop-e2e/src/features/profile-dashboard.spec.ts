@@ -3,9 +3,11 @@ import {
   PROFILE_DASHBOARD_FEATURE,
   PROFILE_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-profile-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Profile Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROFILE_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(PROFILE_DASHBOARD_FEATURE.testId),

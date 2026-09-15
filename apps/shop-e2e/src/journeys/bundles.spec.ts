@@ -9,6 +9,7 @@ import { BUNDLES_LIST_FEATURE } from '@org/shop-feature-bundles-list';
 import { BUNDLES_WIZARD_FEATURE } from '@org/shop-feature-bundles-wizard';
 import { BUNDLES_DASHBOARD_FEATURE } from '@org/shop-feature-bundles-dashboard';
 import { BUNDLES_INSIGHTS_FEATURE } from '@org/shop-feature-bundles-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   BUNDLES_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Bundles journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every bundles feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

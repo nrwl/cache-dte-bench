@@ -3,9 +3,11 @@ import {
   NOTIFICATIONS_SETTINGS_FEATURE,
   NOTIFICATIONS_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-notifications-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Notifications Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(NOTIFICATIONS_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(NOTIFICATIONS_SETTINGS_FEATURE.testId),

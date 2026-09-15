@@ -3,9 +3,11 @@ import {
   INVENTORY_INSIGHTS_FEATURE,
   INVENTORY_INSIGHTS_ITEM_COUNT,
 } from '@org/shop-feature-inventory-insights';
+import { pace } from '../support/pacing';
 
 test.describe('Inventory Insights', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(INVENTORY_INSIGHTS_FEATURE.route);
     await expect(
       page.getByTestId(INVENTORY_INSIGHTS_FEATURE.testId),

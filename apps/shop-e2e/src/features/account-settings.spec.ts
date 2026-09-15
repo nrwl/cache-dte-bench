@@ -3,9 +3,11 @@ import {
   ACCOUNT_SETTINGS_FEATURE,
   ACCOUNT_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-account-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Account Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ACCOUNT_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(ACCOUNT_SETTINGS_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   PAYMENTS_WIZARD_FEATURE,
   PAYMENTS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-payments-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Payments Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PAYMENTS_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(PAYMENTS_WIZARD_FEATURE.testId),

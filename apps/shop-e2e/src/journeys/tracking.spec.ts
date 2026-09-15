@@ -9,6 +9,7 @@ import { TRACKING_LIST_FEATURE } from '@org/shop-feature-tracking-list';
 import { TRACKING_WIZARD_FEATURE } from '@org/shop-feature-tracking-wizard';
 import { TRACKING_DASHBOARD_FEATURE } from '@org/shop-feature-tracking-dashboard';
 import { TRACKING_INSIGHTS_FEATURE } from '@org/shop-feature-tracking-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   TRACKING_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Tracking journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every tracking feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

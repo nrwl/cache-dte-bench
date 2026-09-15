@@ -3,9 +3,11 @@ import {
   ANALYTICS_DASHBOARD_FEATURE,
   ANALYTICS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-analytics-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Analytics Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ANALYTICS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(ANALYTICS_DASHBOARD_FEATURE.testId),

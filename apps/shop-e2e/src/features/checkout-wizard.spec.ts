@@ -3,9 +3,11 @@ import {
   CHECKOUT_WIZARD_FEATURE,
   CHECKOUT_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-checkout-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Checkout Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CHECKOUT_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(CHECKOUT_WIZARD_FEATURE.testId),

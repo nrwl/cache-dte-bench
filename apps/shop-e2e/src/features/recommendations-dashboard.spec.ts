@@ -3,9 +3,11 @@ import {
   RECOMMENDATIONS_DASHBOARD_FEATURE,
   RECOMMENDATIONS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-recommendations-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Recommendations Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RECOMMENDATIONS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(RECOMMENDATIONS_DASHBOARD_FEATURE.testId),

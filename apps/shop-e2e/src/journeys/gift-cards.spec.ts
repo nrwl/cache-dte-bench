@@ -9,6 +9,7 @@ import { GIFT_CARDS_LIST_FEATURE } from '@org/shop-feature-gift-cards-list';
 import { GIFT_CARDS_WIZARD_FEATURE } from '@org/shop-feature-gift-cards-wizard';
 import { GIFT_CARDS_DASHBOARD_FEATURE } from '@org/shop-feature-gift-cards-dashboard';
 import { GIFT_CARDS_INSIGHTS_FEATURE } from '@org/shop-feature-gift-cards-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   GIFT_CARDS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Gift Cards journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every gift-cards feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

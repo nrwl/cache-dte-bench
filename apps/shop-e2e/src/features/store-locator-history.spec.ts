@@ -3,9 +3,11 @@ import {
   STORE_LOCATOR_HISTORY_FEATURE,
   STORE_LOCATOR_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-store-locator-history';
+import { pace } from '../support/pacing';
 
 test.describe('Store Locator History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(STORE_LOCATOR_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(STORE_LOCATOR_HISTORY_FEATURE.testId),

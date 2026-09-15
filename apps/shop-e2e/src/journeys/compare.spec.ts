@@ -9,6 +9,7 @@ import { COMPARE_LIST_FEATURE } from '@org/shop-feature-compare-list';
 import { COMPARE_WIZARD_FEATURE } from '@org/shop-feature-compare-wizard';
 import { COMPARE_DASHBOARD_FEATURE } from '@org/shop-feature-compare-dashboard';
 import { COMPARE_INSIGHTS_FEATURE } from '@org/shop-feature-compare-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   COMPARE_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Compare journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every compare feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

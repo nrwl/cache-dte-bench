@@ -9,6 +9,7 @@ import { ORDERS_LIST_FEATURE } from '@org/shop-feature-orders-list';
 import { ORDERS_WIZARD_FEATURE } from '@org/shop-feature-orders-wizard';
 import { ORDERS_DASHBOARD_FEATURE } from '@org/shop-feature-orders-dashboard';
 import { ORDERS_INSIGHTS_FEATURE } from '@org/shop-feature-orders-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   ORDERS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Orders journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every orders feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

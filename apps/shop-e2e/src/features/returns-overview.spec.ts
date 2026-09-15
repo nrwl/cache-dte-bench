@@ -3,9 +3,11 @@ import {
   RETURNS_OVERVIEW_FEATURE,
   RETURNS_OVERVIEW_ITEM_COUNT,
 } from '@org/shop-feature-returns-overview';
+import { pace } from '../support/pacing';
 
 test.describe('Returns Overview', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RETURNS_OVERVIEW_FEATURE.route);
     await expect(
       page.getByTestId(RETURNS_OVERVIEW_FEATURE.testId),

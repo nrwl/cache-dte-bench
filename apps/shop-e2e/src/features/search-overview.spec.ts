@@ -3,9 +3,11 @@ import {
   SEARCH_OVERVIEW_FEATURE,
   SEARCH_OVERVIEW_ITEM_COUNT,
 } from '@org/shop-feature-search-overview';
+import { pace } from '../support/pacing';
 
 test.describe('Search Overview', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SEARCH_OVERVIEW_FEATURE.route);
     await expect(
       page.getByTestId(SEARCH_OVERVIEW_FEATURE.testId),

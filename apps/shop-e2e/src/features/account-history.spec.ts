@@ -3,9 +3,11 @@ import {
   ACCOUNT_HISTORY_FEATURE,
   ACCOUNT_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-account-history';
+import { pace } from '../support/pacing';
 
 test.describe('Account History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ACCOUNT_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(ACCOUNT_HISTORY_FEATURE.testId),

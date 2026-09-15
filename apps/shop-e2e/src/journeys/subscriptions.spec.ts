@@ -9,6 +9,7 @@ import { SUBSCRIPTIONS_LIST_FEATURE } from '@org/shop-feature-subscriptions-list
 import { SUBSCRIPTIONS_WIZARD_FEATURE } from '@org/shop-feature-subscriptions-wizard';
 import { SUBSCRIPTIONS_DASHBOARD_FEATURE } from '@org/shop-feature-subscriptions-dashboard';
 import { SUBSCRIPTIONS_INSIGHTS_FEATURE } from '@org/shop-feature-subscriptions-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   SUBSCRIPTIONS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Subscriptions journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every subscriptions feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

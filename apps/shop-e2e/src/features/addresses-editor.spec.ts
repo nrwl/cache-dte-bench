@@ -3,9 +3,11 @@ import {
   ADDRESSES_EDITOR_FEATURE,
   ADDRESSES_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-addresses-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Addresses Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ADDRESSES_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(ADDRESSES_EDITOR_FEATURE.testId),

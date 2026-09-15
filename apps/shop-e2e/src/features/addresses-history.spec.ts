@@ -3,9 +3,11 @@ import {
   ADDRESSES_HISTORY_FEATURE,
   ADDRESSES_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-addresses-history';
+import { pace } from '../support/pacing';
 
 test.describe('Addresses History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ADDRESSES_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(ADDRESSES_HISTORY_FEATURE.testId),

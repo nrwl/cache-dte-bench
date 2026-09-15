@@ -3,9 +3,11 @@ import {
   LOYALTY_LIST_FEATURE,
   LOYALTY_LIST_ITEM_COUNT,
 } from '@org/shop-feature-loyalty-list';
+import { pace } from '../support/pacing';
 
 test.describe('Loyalty List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(LOYALTY_LIST_FEATURE.route);
     await expect(page.getByTestId(LOYALTY_LIST_FEATURE.testId)).toBeVisible();
   });

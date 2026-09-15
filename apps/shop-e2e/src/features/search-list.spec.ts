@@ -3,9 +3,11 @@ import {
   SEARCH_LIST_FEATURE,
   SEARCH_LIST_ITEM_COUNT,
 } from '@org/shop-feature-search-list';
+import { pace } from '../support/pacing';
 
 test.describe('Search List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SEARCH_LIST_FEATURE.route);
     await expect(page.getByTestId(SEARCH_LIST_FEATURE.testId)).toBeVisible();
   });

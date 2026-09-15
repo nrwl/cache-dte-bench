@@ -3,9 +3,11 @@ import {
   ORDERS_WIZARD_FEATURE,
   ORDERS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-orders-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Orders Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ORDERS_WIZARD_FEATURE.route);
     await expect(page.getByTestId(ORDERS_WIZARD_FEATURE.testId)).toBeVisible();
   });

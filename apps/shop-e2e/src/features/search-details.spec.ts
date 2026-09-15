@@ -3,9 +3,11 @@ import {
   SEARCH_DETAILS_FEATURE,
   SEARCH_DETAILS_ITEM_COUNT,
 } from '@org/shop-feature-search-details';
+import { pace } from '../support/pacing';
 
 test.describe('Search Details', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SEARCH_DETAILS_FEATURE.route);
     await expect(page.getByTestId(SEARCH_DETAILS_FEATURE.testId)).toBeVisible();
   });

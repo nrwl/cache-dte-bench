@@ -9,6 +9,7 @@ import { STORE_LOCATOR_LIST_FEATURE } from '@org/shop-feature-store-locator-list
 import { STORE_LOCATOR_WIZARD_FEATURE } from '@org/shop-feature-store-locator-wizard';
 import { STORE_LOCATOR_DASHBOARD_FEATURE } from '@org/shop-feature-store-locator-dashboard';
 import { STORE_LOCATOR_INSIGHTS_FEATURE } from '@org/shop-feature-store-locator-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   STORE_LOCATOR_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Store Locator journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every store-locator feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

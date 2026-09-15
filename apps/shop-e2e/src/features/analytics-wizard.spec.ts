@@ -3,9 +3,11 @@ import {
   ANALYTICS_WIZARD_FEATURE,
   ANALYTICS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-analytics-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Analytics Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ANALYTICS_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(ANALYTICS_WIZARD_FEATURE.testId),

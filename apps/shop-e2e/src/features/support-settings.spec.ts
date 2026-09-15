@@ -3,9 +3,11 @@ import {
   SUPPORT_SETTINGS_FEATURE,
   SUPPORT_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-support-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Support Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUPPORT_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(SUPPORT_SETTINGS_FEATURE.testId),

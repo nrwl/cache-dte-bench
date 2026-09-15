@@ -3,9 +3,11 @@ import {
   LOYALTY_WIZARD_FEATURE,
   LOYALTY_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-loyalty-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Loyalty Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(LOYALTY_WIZARD_FEATURE.route);
     await expect(page.getByTestId(LOYALTY_WIZARD_FEATURE.testId)).toBeVisible();
   });

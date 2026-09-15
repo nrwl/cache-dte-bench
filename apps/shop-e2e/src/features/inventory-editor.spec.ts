@@ -3,9 +3,11 @@ import {
   INVENTORY_EDITOR_FEATURE,
   INVENTORY_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-inventory-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Inventory Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(INVENTORY_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(INVENTORY_EDITOR_FEATURE.testId),

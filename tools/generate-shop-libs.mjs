@@ -2151,9 +2151,11 @@ function genE2e() {
       join(e2eRoot, 'features', `${f.name}.spec.ts`),
       `import { expect, test } from '@playwright/test';
 import { ${U}_FEATURE, ${U}_ITEM_COUNT } from '${f.pkg}';
+import { pace } from '../support/pacing';
 
 test.describe('${title(f.name)}', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(${U}_FEATURE.route);
     await expect(page.getByTestId(${U}_FEATURE.testId)).toBeVisible();
   });
@@ -2196,12 +2198,17 @@ test.describe('${title(f.name)}', () => {
       join(e2eRoot, 'journeys', `${domain}.spec.ts`),
       `import { expect, test } from '@playwright/test';
 ${imports}
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
 ${domainFeatures.map((f) => `  ${upper(f.name)}_FEATURE,`).join('\n')}
 ];
 
 test.describe('${title(domain)} journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every ${domain} feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

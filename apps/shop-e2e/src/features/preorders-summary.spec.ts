@@ -3,9 +3,11 @@ import {
   PREORDERS_SUMMARY_FEATURE,
   PREORDERS_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-preorders-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Preorders Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PREORDERS_SUMMARY_FEATURE.route);
     await expect(
       page.getByTestId(PREORDERS_SUMMARY_FEATURE.testId),

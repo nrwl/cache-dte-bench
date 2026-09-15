@@ -3,9 +3,11 @@ import {
   ORDERS_OVERVIEW_FEATURE,
   ORDERS_OVERVIEW_ITEM_COUNT,
 } from '@org/shop-feature-orders-overview';
+import { pace } from '../support/pacing';
 
 test.describe('Orders Overview', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ORDERS_OVERVIEW_FEATURE.route);
     await expect(
       page.getByTestId(ORDERS_OVERVIEW_FEATURE.testId),

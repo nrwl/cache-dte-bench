@@ -3,9 +3,11 @@ import {
   CART_WIZARD_FEATURE,
   CART_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-cart-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Cart Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CART_WIZARD_FEATURE.route);
     await expect(page.getByTestId(CART_WIZARD_FEATURE.testId)).toBeVisible();
   });

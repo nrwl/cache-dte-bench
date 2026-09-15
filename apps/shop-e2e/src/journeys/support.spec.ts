@@ -9,6 +9,7 @@ import { SUPPORT_LIST_FEATURE } from '@org/shop-feature-support-list';
 import { SUPPORT_WIZARD_FEATURE } from '@org/shop-feature-support-wizard';
 import { SUPPORT_DASHBOARD_FEATURE } from '@org/shop-feature-support-dashboard';
 import { SUPPORT_INSIGHTS_FEATURE } from '@org/shop-feature-support-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   SUPPORT_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Support journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every support feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

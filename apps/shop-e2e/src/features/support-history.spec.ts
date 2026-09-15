@@ -3,9 +3,11 @@ import {
   SUPPORT_HISTORY_FEATURE,
   SUPPORT_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-support-history';
+import { pace } from '../support/pacing';
 
 test.describe('Support History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUPPORT_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(SUPPORT_HISTORY_FEATURE.testId),

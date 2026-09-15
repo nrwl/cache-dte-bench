@@ -3,9 +3,11 @@ import {
   CART_EDITOR_FEATURE,
   CART_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-cart-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Cart Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CART_EDITOR_FEATURE.route);
     await expect(page.getByTestId(CART_EDITOR_FEATURE.testId)).toBeVisible();
   });

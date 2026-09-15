@@ -9,6 +9,7 @@ import { LOYALTY_LIST_FEATURE } from '@org/shop-feature-loyalty-list';
 import { LOYALTY_WIZARD_FEATURE } from '@org/shop-feature-loyalty-wizard';
 import { LOYALTY_DASHBOARD_FEATURE } from '@org/shop-feature-loyalty-dashboard';
 import { LOYALTY_INSIGHTS_FEATURE } from '@org/shop-feature-loyalty-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   LOYALTY_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Loyalty journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every loyalty feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

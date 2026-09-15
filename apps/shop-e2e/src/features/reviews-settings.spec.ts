@@ -3,9 +3,11 @@ import {
   REVIEWS_SETTINGS_FEATURE,
   REVIEWS_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-reviews-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Reviews Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(REVIEWS_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(REVIEWS_SETTINGS_FEATURE.testId),

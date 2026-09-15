@@ -3,9 +3,11 @@ import {
   GIFT_CARDS_SUMMARY_FEATURE,
   GIFT_CARDS_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-gift-cards-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Gift Cards Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(GIFT_CARDS_SUMMARY_FEATURE.route);
     await expect(
       page.getByTestId(GIFT_CARDS_SUMMARY_FEATURE.testId),

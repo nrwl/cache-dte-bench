@@ -3,9 +3,11 @@ import {
   SUBSCRIPTIONS_DETAILS_FEATURE,
   SUBSCRIPTIONS_DETAILS_ITEM_COUNT,
 } from '@org/shop-feature-subscriptions-details';
+import { pace } from '../support/pacing';
 
 test.describe('Subscriptions Details', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUBSCRIPTIONS_DETAILS_FEATURE.route);
     await expect(
       page.getByTestId(SUBSCRIPTIONS_DETAILS_FEATURE.testId),

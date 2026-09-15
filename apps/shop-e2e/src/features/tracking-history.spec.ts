@@ -3,9 +3,11 @@ import {
   TRACKING_HISTORY_FEATURE,
   TRACKING_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-tracking-history';
+import { pace } from '../support/pacing';
 
 test.describe('Tracking History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(TRACKING_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(TRACKING_HISTORY_FEATURE.testId),

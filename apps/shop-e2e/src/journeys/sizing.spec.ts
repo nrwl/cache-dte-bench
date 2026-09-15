@@ -9,6 +9,7 @@ import { SIZING_LIST_FEATURE } from '@org/shop-feature-sizing-list';
 import { SIZING_WIZARD_FEATURE } from '@org/shop-feature-sizing-wizard';
 import { SIZING_DASHBOARD_FEATURE } from '@org/shop-feature-sizing-dashboard';
 import { SIZING_INSIGHTS_FEATURE } from '@org/shop-feature-sizing-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   SIZING_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Sizing journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every sizing feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

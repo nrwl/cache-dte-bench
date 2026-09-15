@@ -3,9 +3,11 @@ import {
   SIZING_EDITOR_FEATURE,
   SIZING_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-sizing-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Sizing Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SIZING_EDITOR_FEATURE.route);
     await expect(page.getByTestId(SIZING_EDITOR_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   TRACKING_DETAILS_FEATURE,
   TRACKING_DETAILS_ITEM_COUNT,
 } from '@org/shop-feature-tracking-details';
+import { pace } from '../support/pacing';
 
 test.describe('Tracking Details', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(TRACKING_DETAILS_FEATURE.route);
     await expect(
       page.getByTestId(TRACKING_DETAILS_FEATURE.testId),

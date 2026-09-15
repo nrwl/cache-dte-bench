@@ -3,9 +3,11 @@ import {
   FEEDBACK_SUMMARY_FEATURE,
   FEEDBACK_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-feedback-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Feedback Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(FEEDBACK_SUMMARY_FEATURE.route);
     await expect(
       page.getByTestId(FEEDBACK_SUMMARY_FEATURE.testId),

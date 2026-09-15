@@ -3,9 +3,11 @@ import {
   PROFILE_WIZARD_FEATURE,
   PROFILE_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-profile-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Profile Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROFILE_WIZARD_FEATURE.route);
     await expect(page.getByTestId(PROFILE_WIZARD_FEATURE.testId)).toBeVisible();
   });

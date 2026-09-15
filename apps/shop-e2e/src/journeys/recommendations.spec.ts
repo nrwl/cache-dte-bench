@@ -9,6 +9,7 @@ import { RECOMMENDATIONS_LIST_FEATURE } from '@org/shop-feature-recommendations-
 import { RECOMMENDATIONS_WIZARD_FEATURE } from '@org/shop-feature-recommendations-wizard';
 import { RECOMMENDATIONS_DASHBOARD_FEATURE } from '@org/shop-feature-recommendations-dashboard';
 import { RECOMMENDATIONS_INSIGHTS_FEATURE } from '@org/shop-feature-recommendations-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   RECOMMENDATIONS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Recommendations journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every recommendations feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

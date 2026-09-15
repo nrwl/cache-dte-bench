@@ -3,9 +3,11 @@ import {
   CHECKOUT_DASHBOARD_FEATURE,
   CHECKOUT_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-checkout-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Checkout Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CHECKOUT_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(CHECKOUT_DASHBOARD_FEATURE.testId),

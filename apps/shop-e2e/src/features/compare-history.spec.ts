@@ -3,9 +3,11 @@ import {
   COMPARE_HISTORY_FEATURE,
   COMPARE_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-compare-history';
+import { pace } from '../support/pacing';
 
 test.describe('Compare History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(COMPARE_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(COMPARE_HISTORY_FEATURE.testId),

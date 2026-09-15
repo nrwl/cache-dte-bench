@@ -3,9 +3,11 @@ import {
   SUPPORT_WIZARD_FEATURE,
   SUPPORT_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-support-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Support Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUPPORT_WIZARD_FEATURE.route);
     await expect(page.getByTestId(SUPPORT_WIZARD_FEATURE.testId)).toBeVisible();
   });

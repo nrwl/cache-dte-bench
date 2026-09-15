@@ -3,9 +3,11 @@ import {
   RECOMMENDATIONS_EDITOR_FEATURE,
   RECOMMENDATIONS_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-recommendations-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Recommendations Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RECOMMENDATIONS_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(RECOMMENDATIONS_EDITOR_FEATURE.testId),

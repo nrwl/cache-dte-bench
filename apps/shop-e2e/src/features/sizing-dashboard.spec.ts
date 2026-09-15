@@ -3,9 +3,11 @@ import {
   SIZING_DASHBOARD_FEATURE,
   SIZING_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-sizing-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Sizing Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SIZING_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(SIZING_DASHBOARD_FEATURE.testId),

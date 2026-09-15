@@ -3,9 +3,11 @@ import {
   AUTH_LIST_FEATURE,
   AUTH_LIST_ITEM_COUNT,
 } from '@org/shop-feature-auth-list';
+import { pace } from '../support/pacing';
 
 test.describe('Auth List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(AUTH_LIST_FEATURE.route);
     await expect(page.getByTestId(AUTH_LIST_FEATURE.testId)).toBeVisible();
   });

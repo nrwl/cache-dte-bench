@@ -3,9 +3,11 @@ import {
   PROFILE_SUMMARY_FEATURE,
   PROFILE_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-profile-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Profile Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROFILE_SUMMARY_FEATURE.route);
     await expect(
       page.getByTestId(PROFILE_SUMMARY_FEATURE.testId),

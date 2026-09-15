@@ -3,9 +3,11 @@ import {
   ORDERS_DASHBOARD_FEATURE,
   ORDERS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-orders-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Orders Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ORDERS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(ORDERS_DASHBOARD_FEATURE.testId),

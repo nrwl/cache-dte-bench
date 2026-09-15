@@ -9,6 +9,7 @@ import { NOTIFICATIONS_LIST_FEATURE } from '@org/shop-feature-notifications-list
 import { NOTIFICATIONS_WIZARD_FEATURE } from '@org/shop-feature-notifications-wizard';
 import { NOTIFICATIONS_DASHBOARD_FEATURE } from '@org/shop-feature-notifications-dashboard';
 import { NOTIFICATIONS_INSIGHTS_FEATURE } from '@org/shop-feature-notifications-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   NOTIFICATIONS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Notifications journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every notifications feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

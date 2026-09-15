@@ -3,9 +3,11 @@ import {
   COMPARE_WIZARD_FEATURE,
   COMPARE_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-compare-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Compare Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(COMPARE_WIZARD_FEATURE.route);
     await expect(page.getByTestId(COMPARE_WIZARD_FEATURE.testId)).toBeVisible();
   });

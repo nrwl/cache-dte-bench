@@ -3,9 +3,11 @@ import {
   AUTH_DASHBOARD_FEATURE,
   AUTH_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-auth-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Auth Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(AUTH_DASHBOARD_FEATURE.route);
     await expect(page.getByTestId(AUTH_DASHBOARD_FEATURE.testId)).toBeVisible();
   });

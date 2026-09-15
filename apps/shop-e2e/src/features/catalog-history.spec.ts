@@ -3,9 +3,11 @@ import {
   CATALOG_HISTORY_FEATURE,
   CATALOG_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-catalog-history';
+import { pace } from '../support/pacing';
 
 test.describe('Catalog History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CATALOG_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(CATALOG_HISTORY_FEATURE.testId),

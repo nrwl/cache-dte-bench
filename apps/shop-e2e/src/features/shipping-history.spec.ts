@@ -3,9 +3,11 @@ import {
   SHIPPING_HISTORY_FEATURE,
   SHIPPING_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-shipping-history';
+import { pace } from '../support/pacing';
 
 test.describe('Shipping History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SHIPPING_HISTORY_FEATURE.route);
     await expect(
       page.getByTestId(SHIPPING_HISTORY_FEATURE.testId),

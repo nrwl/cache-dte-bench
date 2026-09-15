@@ -3,9 +3,11 @@ import {
   COMPARE_LIST_FEATURE,
   COMPARE_LIST_ITEM_COUNT,
 } from '@org/shop-feature-compare-list';
+import { pace } from '../support/pacing';
 
 test.describe('Compare List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(COMPARE_LIST_FEATURE.route);
     await expect(page.getByTestId(COMPARE_LIST_FEATURE.testId)).toBeVisible();
   });

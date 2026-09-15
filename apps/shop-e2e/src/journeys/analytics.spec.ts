@@ -9,6 +9,7 @@ import { ANALYTICS_LIST_FEATURE } from '@org/shop-feature-analytics-list';
 import { ANALYTICS_WIZARD_FEATURE } from '@org/shop-feature-analytics-wizard';
 import { ANALYTICS_DASHBOARD_FEATURE } from '@org/shop-feature-analytics-dashboard';
 import { ANALYTICS_INSIGHTS_FEATURE } from '@org/shop-feature-analytics-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   ANALYTICS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Analytics journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every analytics feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

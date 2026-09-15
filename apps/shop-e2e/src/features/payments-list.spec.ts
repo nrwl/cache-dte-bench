@@ -3,9 +3,11 @@ import {
   PAYMENTS_LIST_FEATURE,
   PAYMENTS_LIST_ITEM_COUNT,
 } from '@org/shop-feature-payments-list';
+import { pace } from '../support/pacing';
 
 test.describe('Payments List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PAYMENTS_LIST_FEATURE.route);
     await expect(page.getByTestId(PAYMENTS_LIST_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   SEARCH_EDITOR_FEATURE,
   SEARCH_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-search-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Search Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SEARCH_EDITOR_FEATURE.route);
     await expect(page.getByTestId(SEARCH_EDITOR_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   REVIEWS_DASHBOARD_FEATURE,
   REVIEWS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-reviews-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Reviews Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(REVIEWS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(REVIEWS_DASHBOARD_FEATURE.testId),

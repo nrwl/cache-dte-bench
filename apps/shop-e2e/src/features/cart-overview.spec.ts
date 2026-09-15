@@ -3,9 +3,11 @@ import {
   CART_OVERVIEW_FEATURE,
   CART_OVERVIEW_ITEM_COUNT,
 } from '@org/shop-feature-cart-overview';
+import { pace } from '../support/pacing';
 
 test.describe('Cart Overview', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CART_OVERVIEW_FEATURE.route);
     await expect(page.getByTestId(CART_OVERVIEW_FEATURE.testId)).toBeVisible();
   });

@@ -3,9 +3,11 @@ import {
   ACCOUNT_WIZARD_FEATURE,
   ACCOUNT_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-account-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Account Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ACCOUNT_WIZARD_FEATURE.route);
     await expect(page.getByTestId(ACCOUNT_WIZARD_FEATURE.testId)).toBeVisible();
   });

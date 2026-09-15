@@ -3,9 +3,11 @@ import {
   AUTH_WIZARD_FEATURE,
   AUTH_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-auth-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Auth Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(AUTH_WIZARD_FEATURE.route);
     await expect(page.getByTestId(AUTH_WIZARD_FEATURE.testId)).toBeVisible();
   });

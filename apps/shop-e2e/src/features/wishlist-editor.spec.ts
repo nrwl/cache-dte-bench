@@ -3,9 +3,11 @@ import {
   WISHLIST_EDITOR_FEATURE,
   WISHLIST_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-wishlist-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Wishlist Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(WISHLIST_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(WISHLIST_EDITOR_FEATURE.testId),

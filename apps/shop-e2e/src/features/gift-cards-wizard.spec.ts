@@ -3,9 +3,11 @@ import {
   GIFT_CARDS_WIZARD_FEATURE,
   GIFT_CARDS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-gift-cards-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Gift Cards Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(GIFT_CARDS_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(GIFT_CARDS_WIZARD_FEATURE.testId),

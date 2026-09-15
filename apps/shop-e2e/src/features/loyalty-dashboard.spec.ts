@@ -3,9 +3,11 @@ import {
   LOYALTY_DASHBOARD_FEATURE,
   LOYALTY_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-loyalty-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Loyalty Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(LOYALTY_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(LOYALTY_DASHBOARD_FEATURE.testId),

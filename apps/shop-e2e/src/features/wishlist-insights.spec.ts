@@ -3,9 +3,11 @@ import {
   WISHLIST_INSIGHTS_FEATURE,
   WISHLIST_INSIGHTS_ITEM_COUNT,
 } from '@org/shop-feature-wishlist-insights';
+import { pace } from '../support/pacing';
 
 test.describe('Wishlist Insights', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(WISHLIST_INSIGHTS_FEATURE.route);
     await expect(
       page.getByTestId(WISHLIST_INSIGHTS_FEATURE.testId),

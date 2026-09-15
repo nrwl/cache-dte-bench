@@ -3,9 +3,11 @@ import {
   WISHLIST_DASHBOARD_FEATURE,
   WISHLIST_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-wishlist-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Wishlist Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(WISHLIST_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(WISHLIST_DASHBOARD_FEATURE.testId),

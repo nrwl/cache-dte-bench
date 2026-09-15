@@ -3,9 +3,11 @@ import {
   ACCOUNT_LIST_FEATURE,
   ACCOUNT_LIST_ITEM_COUNT,
 } from '@org/shop-feature-account-list';
+import { pace } from '../support/pacing';
 
 test.describe('Account List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ACCOUNT_LIST_FEATURE.route);
     await expect(page.getByTestId(ACCOUNT_LIST_FEATURE.testId)).toBeVisible();
   });

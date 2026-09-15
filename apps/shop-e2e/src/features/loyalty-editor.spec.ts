@@ -3,9 +3,11 @@ import {
   LOYALTY_EDITOR_FEATURE,
   LOYALTY_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-loyalty-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Loyalty Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(LOYALTY_EDITOR_FEATURE.route);
     await expect(page.getByTestId(LOYALTY_EDITOR_FEATURE.testId)).toBeVisible();
   });

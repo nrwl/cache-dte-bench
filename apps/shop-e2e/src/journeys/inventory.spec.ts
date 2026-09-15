@@ -9,6 +9,7 @@ import { INVENTORY_LIST_FEATURE } from '@org/shop-feature-inventory-list';
 import { INVENTORY_WIZARD_FEATURE } from '@org/shop-feature-inventory-wizard';
 import { INVENTORY_DASHBOARD_FEATURE } from '@org/shop-feature-inventory-dashboard';
 import { INVENTORY_INSIGHTS_FEATURE } from '@org/shop-feature-inventory-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   INVENTORY_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Inventory journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every inventory feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

@@ -3,9 +3,11 @@ import {
   AUTH_HISTORY_FEATURE,
   AUTH_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-auth-history';
+import { pace } from '../support/pacing';
 
 test.describe('Auth History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(AUTH_HISTORY_FEATURE.route);
     await expect(page.getByTestId(AUTH_HISTORY_FEATURE.testId)).toBeVisible();
   });

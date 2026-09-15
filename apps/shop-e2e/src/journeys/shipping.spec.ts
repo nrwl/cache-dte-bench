@@ -9,6 +9,7 @@ import { SHIPPING_LIST_FEATURE } from '@org/shop-feature-shipping-list';
 import { SHIPPING_WIZARD_FEATURE } from '@org/shop-feature-shipping-wizard';
 import { SHIPPING_DASHBOARD_FEATURE } from '@org/shop-feature-shipping-dashboard';
 import { SHIPPING_INSIGHTS_FEATURE } from '@org/shop-feature-shipping-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   SHIPPING_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Shipping journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every shipping feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

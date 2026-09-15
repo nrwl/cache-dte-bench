@@ -3,9 +3,11 @@ import {
   WISHLIST_WIZARD_FEATURE,
   WISHLIST_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-wishlist-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Wishlist Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(WISHLIST_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(WISHLIST_WIZARD_FEATURE.testId),

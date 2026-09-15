@@ -3,9 +3,11 @@ import {
   ACCOUNT_EDITOR_FEATURE,
   ACCOUNT_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-account-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Account Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ACCOUNT_EDITOR_FEATURE.route);
     await expect(page.getByTestId(ACCOUNT_EDITOR_FEATURE.testId)).toBeVisible();
   });

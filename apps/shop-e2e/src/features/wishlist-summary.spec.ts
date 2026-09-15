@@ -3,9 +3,11 @@ import {
   WISHLIST_SUMMARY_FEATURE,
   WISHLIST_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-wishlist-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Wishlist Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(WISHLIST_SUMMARY_FEATURE.route);
     await expect(
       page.getByTestId(WISHLIST_SUMMARY_FEATURE.testId),

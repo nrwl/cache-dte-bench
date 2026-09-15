@@ -3,9 +3,11 @@ import {
   BUNDLES_DASHBOARD_FEATURE,
   BUNDLES_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-bundles-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Bundles Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(BUNDLES_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(BUNDLES_DASHBOARD_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   BUNDLES_DETAILS_FEATURE,
   BUNDLES_DETAILS_ITEM_COUNT,
 } from '@org/shop-feature-bundles-details';
+import { pace } from '../support/pacing';
 
 test.describe('Bundles Details', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(BUNDLES_DETAILS_FEATURE.route);
     await expect(
       page.getByTestId(BUNDLES_DETAILS_FEATURE.testId),

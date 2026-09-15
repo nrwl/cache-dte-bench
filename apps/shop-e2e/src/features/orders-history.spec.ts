@@ -3,9 +3,11 @@ import {
   ORDERS_HISTORY_FEATURE,
   ORDERS_HISTORY_ITEM_COUNT,
 } from '@org/shop-feature-orders-history';
+import { pace } from '../support/pacing';
 
 test.describe('Orders History', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ORDERS_HISTORY_FEATURE.route);
     await expect(page.getByTestId(ORDERS_HISTORY_FEATURE.testId)).toBeVisible();
   });

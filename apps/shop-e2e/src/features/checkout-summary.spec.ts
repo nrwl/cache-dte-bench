@@ -3,9 +3,11 @@ import {
   CHECKOUT_SUMMARY_FEATURE,
   CHECKOUT_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-checkout-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Checkout Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CHECKOUT_SUMMARY_FEATURE.route);
     await expect(
       page.getByTestId(CHECKOUT_SUMMARY_FEATURE.testId),

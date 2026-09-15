@@ -3,9 +3,11 @@ import {
   GIFT_CARDS_DASHBOARD_FEATURE,
   GIFT_CARDS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-gift-cards-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Gift Cards Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(GIFT_CARDS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(GIFT_CARDS_DASHBOARD_FEATURE.testId),

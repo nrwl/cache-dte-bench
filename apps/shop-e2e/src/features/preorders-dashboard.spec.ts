@@ -3,9 +3,11 @@ import {
   PREORDERS_DASHBOARD_FEATURE,
   PREORDERS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-preorders-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Preorders Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PREORDERS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(PREORDERS_DASHBOARD_FEATURE.testId),

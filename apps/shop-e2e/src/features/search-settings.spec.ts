@@ -3,9 +3,11 @@ import {
   SEARCH_SETTINGS_FEATURE,
   SEARCH_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-search-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Search Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SEARCH_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(SEARCH_SETTINGS_FEATURE.testId),

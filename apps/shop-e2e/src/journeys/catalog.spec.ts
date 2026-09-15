@@ -9,6 +9,7 @@ import { CATALOG_LIST_FEATURE } from '@org/shop-feature-catalog-list';
 import { CATALOG_WIZARD_FEATURE } from '@org/shop-feature-catalog-wizard';
 import { CATALOG_DASHBOARD_FEATURE } from '@org/shop-feature-catalog-dashboard';
 import { CATALOG_INSIGHTS_FEATURE } from '@org/shop-feature-catalog-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   CATALOG_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Catalog journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every catalog feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

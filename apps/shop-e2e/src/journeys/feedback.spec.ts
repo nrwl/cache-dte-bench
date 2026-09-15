@@ -9,6 +9,7 @@ import { FEEDBACK_LIST_FEATURE } from '@org/shop-feature-feedback-list';
 import { FEEDBACK_WIZARD_FEATURE } from '@org/shop-feature-feedback-wizard';
 import { FEEDBACK_DASHBOARD_FEATURE } from '@org/shop-feature-feedback-dashboard';
 import { FEEDBACK_INSIGHTS_FEATURE } from '@org/shop-feature-feedback-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   FEEDBACK_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Feedback journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every feedback feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

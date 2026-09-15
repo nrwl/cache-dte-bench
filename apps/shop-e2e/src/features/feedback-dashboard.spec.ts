@@ -3,9 +3,11 @@ import {
   FEEDBACK_DASHBOARD_FEATURE,
   FEEDBACK_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-feedback-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Feedback Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(FEEDBACK_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(FEEDBACK_DASHBOARD_FEATURE.testId),

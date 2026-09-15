@@ -3,9 +3,11 @@ import {
   SHIPPING_EDITOR_FEATURE,
   SHIPPING_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-shipping-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Shipping Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SHIPPING_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(SHIPPING_EDITOR_FEATURE.testId),

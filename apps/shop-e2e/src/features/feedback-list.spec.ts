@@ -3,9 +3,11 @@ import {
   FEEDBACK_LIST_FEATURE,
   FEEDBACK_LIST_ITEM_COUNT,
 } from '@org/shop-feature-feedback-list';
+import { pace } from '../support/pacing';
 
 test.describe('Feedback List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(FEEDBACK_LIST_FEATURE.route);
     await expect(page.getByTestId(FEEDBACK_LIST_FEATURE.testId)).toBeVisible();
   });

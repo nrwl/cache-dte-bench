@@ -3,9 +3,11 @@ import {
   NOTIFICATIONS_WIZARD_FEATURE,
   NOTIFICATIONS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-notifications-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Notifications Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(NOTIFICATIONS_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(NOTIFICATIONS_WIZARD_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   PAYMENTS_INSIGHTS_FEATURE,
   PAYMENTS_INSIGHTS_ITEM_COUNT,
 } from '@org/shop-feature-payments-insights';
+import { pace } from '../support/pacing';
 
 test.describe('Payments Insights', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PAYMENTS_INSIGHTS_FEATURE.route);
     await expect(
       page.getByTestId(PAYMENTS_INSIGHTS_FEATURE.testId),

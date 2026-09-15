@@ -3,9 +3,11 @@ import {
   SUBSCRIPTIONS_WIZARD_FEATURE,
   SUBSCRIPTIONS_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-subscriptions-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Subscriptions Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUBSCRIPTIONS_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(SUBSCRIPTIONS_WIZARD_FEATURE.testId),

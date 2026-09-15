@@ -3,9 +3,11 @@ import {
   STORE_LOCATOR_WIZARD_FEATURE,
   STORE_LOCATOR_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-store-locator-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Store Locator Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(STORE_LOCATOR_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(STORE_LOCATOR_WIZARD_FEATURE.testId),

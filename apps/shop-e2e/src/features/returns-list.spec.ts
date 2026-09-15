@@ -3,9 +3,11 @@ import {
   RETURNS_LIST_FEATURE,
   RETURNS_LIST_ITEM_COUNT,
 } from '@org/shop-feature-returns-list';
+import { pace } from '../support/pacing';
 
 test.describe('Returns List', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(RETURNS_LIST_FEATURE.route);
     await expect(page.getByTestId(RETURNS_LIST_FEATURE.testId)).toBeVisible();
   });

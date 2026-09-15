@@ -3,9 +3,11 @@ import {
   TRACKING_DASHBOARD_FEATURE,
   TRACKING_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-tracking-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Tracking Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(TRACKING_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(TRACKING_DASHBOARD_FEATURE.testId),

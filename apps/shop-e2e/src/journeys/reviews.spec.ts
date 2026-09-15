@@ -9,6 +9,7 @@ import { REVIEWS_LIST_FEATURE } from '@org/shop-feature-reviews-list';
 import { REVIEWS_WIZARD_FEATURE } from '@org/shop-feature-reviews-wizard';
 import { REVIEWS_DASHBOARD_FEATURE } from '@org/shop-feature-reviews-dashboard';
 import { REVIEWS_INSIGHTS_FEATURE } from '@org/shop-feature-reviews-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   REVIEWS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Reviews journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every reviews feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

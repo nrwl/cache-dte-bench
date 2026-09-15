@@ -3,9 +3,11 @@ import {
   SUBSCRIPTIONS_DASHBOARD_FEATURE,
   SUBSCRIPTIONS_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-subscriptions-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Subscriptions Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(SUBSCRIPTIONS_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(SUBSCRIPTIONS_DASHBOARD_FEATURE.testId),

@@ -3,9 +3,11 @@ import {
   FEEDBACK_EDITOR_FEATURE,
   FEEDBACK_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-feedback-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Feedback Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(FEEDBACK_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(FEEDBACK_EDITOR_FEATURE.testId),

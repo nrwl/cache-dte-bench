@@ -3,9 +3,11 @@ import {
   INVENTORY_WIZARD_FEATURE,
   INVENTORY_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-inventory-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Inventory Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(INVENTORY_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(INVENTORY_WIZARD_FEATURE.testId),

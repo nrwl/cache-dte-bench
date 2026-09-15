@@ -3,9 +3,11 @@ import {
   ORDERS_SUMMARY_FEATURE,
   ORDERS_SUMMARY_ITEM_COUNT,
 } from '@org/shop-feature-orders-summary';
+import { pace } from '../support/pacing';
 
 test.describe('Orders Summary', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ORDERS_SUMMARY_FEATURE.route);
     await expect(page.getByTestId(ORDERS_SUMMARY_FEATURE.testId)).toBeVisible();
   });

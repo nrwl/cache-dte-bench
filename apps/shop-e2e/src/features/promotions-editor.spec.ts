@@ -3,9 +3,11 @@ import {
   PROMOTIONS_EDITOR_FEATURE,
   PROMOTIONS_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-promotions-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Promotions Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(PROMOTIONS_EDITOR_FEATURE.route);
     await expect(
       page.getByTestId(PROMOTIONS_EDITOR_FEATURE.testId),

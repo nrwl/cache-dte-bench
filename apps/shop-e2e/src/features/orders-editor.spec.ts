@@ -3,9 +3,11 @@ import {
   ORDERS_EDITOR_FEATURE,
   ORDERS_EDITOR_ITEM_COUNT,
 } from '@org/shop-feature-orders-editor';
+import { pace } from '../support/pacing';
 
 test.describe('Orders Editor', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ORDERS_EDITOR_FEATURE.route);
     await expect(page.getByTestId(ORDERS_EDITOR_FEATURE.testId)).toBeVisible();
   });

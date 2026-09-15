@@ -3,9 +3,11 @@ import {
   CATALOG_SETTINGS_FEATURE,
   CATALOG_SETTINGS_ITEM_COUNT,
 } from '@org/shop-feature-catalog-settings';
+import { pace } from '../support/pacing';
 
 test.describe('Catalog Settings', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(CATALOG_SETTINGS_FEATURE.route);
     await expect(
       page.getByTestId(CATALOG_SETTINGS_FEATURE.testId),

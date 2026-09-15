@@ -3,9 +3,11 @@ import {
   ADDRESSES_DASHBOARD_FEATURE,
   ADDRESSES_DASHBOARD_ITEM_COUNT,
 } from '@org/shop-feature-addresses-dashboard';
+import { pace } from '../support/pacing';
 
 test.describe('Addresses Dashboard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(ADDRESSES_DASHBOARD_FEATURE.route);
     await expect(
       page.getByTestId(ADDRESSES_DASHBOARD_FEATURE.testId),

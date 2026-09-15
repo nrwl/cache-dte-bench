@@ -9,6 +9,7 @@ import { PROMOTIONS_LIST_FEATURE } from '@org/shop-feature-promotions-list';
 import { PROMOTIONS_WIZARD_FEATURE } from '@org/shop-feature-promotions-wizard';
 import { PROMOTIONS_DASHBOARD_FEATURE } from '@org/shop-feature-promotions-dashboard';
 import { PROMOTIONS_INSIGHTS_FEATURE } from '@org/shop-feature-promotions-insights';
+import { pace } from '../support/pacing';
 
 const DOMAIN_FEATURES = [
   PROMOTIONS_OVERVIEW_FEATURE,
@@ -24,6 +25,10 @@ const DOMAIN_FEATURES = [
 ];
 
 test.describe('Promotions journey', () => {
+  test.beforeEach(async () => {
+    await pace();
+  });
+
   test('walks through every promotions feature', async ({ page }) => {
     for (const feature of DOMAIN_FEATURES) {
       await page.goto(feature.route);

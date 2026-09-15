@@ -3,9 +3,11 @@ import {
   FEEDBACK_WIZARD_FEATURE,
   FEEDBACK_WIZARD_ITEM_COUNT,
 } from '@org/shop-feature-feedback-wizard';
+import { pace } from '../support/pacing';
 
 test.describe('Feedback Wizard', () => {
   test.beforeEach(async ({ page }) => {
+    await pace();
     await page.goto(FEEDBACK_WIZARD_FEATURE.route);
     await expect(
       page.getByTestId(FEEDBACK_WIZARD_FEATURE.testId),
