@@ -10,6 +10,13 @@ permissions:
   actions: read
   contents: read
 
+# Every command runs locally on its own runner. No Nx Cloud distribution
+# (no `nx start-ci-run`, and DTE is explicitly disabled), so each job's
+# duration reflects the work on that single VM.
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: false
+  NX_NO_CLOUD: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
