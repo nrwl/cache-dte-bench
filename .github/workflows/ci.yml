@@ -10,12 +10,12 @@ permissions:
   actions: read
   contents: read
 
-# Every command runs locally on its own runner. No Nx Cloud distribution
-# (no `nx start-ci-run`, and DTE is explicitly disabled), so each job's
-# duration reflects the work on that single VM.
+# Every command runs locally on its own runner. Nx Cloud is used for remote
+# caching only: there is no `nx start-ci-run` and distributed task execution
+# is explicitly disabled, so each job's duration reflects the work (or cache
+# hits) on that single VM.
 env:
   NX_CLOUD_DISTRIBUTED_EXECUTION: false
-  NX_NO_CLOUD: true
 
 jobs:
   build:
