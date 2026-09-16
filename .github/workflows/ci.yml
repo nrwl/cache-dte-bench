@@ -86,9 +86,16 @@ jobs:
           node-version: 24
           cache: 'npm'
       - run: npm ci
+      - name: Check Hardware Specs
+        run: |
+          echo "=== CPU CORES ==="
+          nproc
+          echo "=== RAM MEMORY ==="
+          free -h
       - run: npx nx format:check --base="remotes/origin/main"
       - run: npx nx sync:check
-      - run: npx nx run-many -t validate-fast validate-slow --parallel=2
+      - run: npx nx validate-fast
+      - run: npx nx validate-slow
 
   e2e:
     runs-on: ubuntu-latest
