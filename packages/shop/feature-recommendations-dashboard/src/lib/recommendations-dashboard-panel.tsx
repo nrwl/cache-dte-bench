@@ -19,7 +19,7 @@ export function RecommendationsDashboardPanel({
         data-testid={`${RECOMMENDATIONS_DASHBOARD_FEATURE.testId}-panel`}
       >
         <p className="feature-panel-hint">
-          Select an entry to see its details.
+          Pick an entry from the table to see its details.
         </p>
       </aside>
     );
