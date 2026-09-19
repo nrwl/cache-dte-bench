@@ -1,0 +1,123 @@
+name: CI (Blacksmith)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+
+# Identical to ci.yml except for `runs-on`, so the two workflows can be
+# compared directly: GitHub-hosted runners vs Blacksmith 4 vCPU runners.
+#
+# Every command runs locally on its own runner. Nx Cloud is used for remote
+# caching only: there is no `nx start-ci-run` and distributed task execution
+# is explicitly disabled, so each job's duration reflects the work (or cache
+# hits) on that single VM.
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: false
+  # Part of every task hash (nx.json sharedGlobals), so the two
+  # workflows never share cache entries with each other.
+  CI_RUNNER: Blacksmith
+
+jobs:
+  build:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          filter: tree:0
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - run: npx nx affected -t build --parallel=4
+
+  typecheck:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          filter: tree:0
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - run: npx nx affected -t typecheck --parallel=4
+
+  lint:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          filter: tree:0
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - run: npx nx affected -t lint --parallel=4
+
+  test:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          filter: tree:0
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - run: npx nx affected -t test --parallel=4
+
+  validate:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          filter: tree:0
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - name: Check Hardware Specs
+        run: |
+          echo "=== CPU CORES ==="
+          nproc
+          echo "=== RAM MEMORY ==="
+          free -h
+      - run: npx nx format:check --base="remotes/origin/main"
+      - run: npx nx sync:check
+      - run: npx nx validate
+
+  e2e:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          filter: tree:0
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npx nx affected -t e2e --parallel=1 --output-style=stream -- --workers=1
